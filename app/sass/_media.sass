@@ -1,0 +1,248 @@
+@import "vars"
+
+/*==========  Desktop First  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+  .upper-head
+    .call-act-cont
+        .btn.btn-info
+          margin: 0px
+          margin-top: 7px
+  .header-2lvl
+    .logo
+      .txt-logo
+        font-size: 47px
+      p
+        font-size: 13px
+        margin: 13px 0
+        white-space: nowrap!important
+        width: 100%
+        text-align: center
+        margin-left: 0px!important
+  .header-3lvl
+    .category-menu
+      li
+        margin: 0 5px
+        padding: 0 3px
+    .find-block
+      .find-txt
+        max-width: 189px
+  .all-news
+    .btn-raised
+      min-width: 162px
+  .catalog-main
+    .catalog-prev
+      .item
+        .prev
+          height: 304px
+  #my-footer
+    .discr2
+      margin-top: -9px
+    .work-time
+      .work-words
+        white-space: normal
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 991px)
+  .content-slider
+    width: 60%
+  .header-2lvl
+    .logo
+      p:first-child
+        white-space: normal
+    .work-time
+      .work-words
+        white-space: normal
+  .header-3lvl
+    .find-block
+      .find-txt
+        max-width: 187px
+  .news-feed
+    padding-right: 0px
+    margin-top: 20px
+  #customNavMain-slider.slider-controls
+    top: 18%
+  .catalog-main
+    .catalog-prev
+      .item
+        padding-right: 15px
+        .prev
+          height: 394px
+          &:after
+            content: ''
+            width: 100%
+            height: 100%
+            position: absolute
+            background-color: $default-color
+            transition: opacity .5s ease, height .5s ease
+            opacity: 0.7
+            left: 0px
+            right: 0px
+            top: 0px
+            bottom: 0px
+            z-index: 0
+        .catalog-content
+          ul
+            opacity: 1
+  #my-footer
+    .social-links
+      margin: 12px 0
+    .ord
+      margin-top: 33px
+    .discr2
+      margin-top: -9px
+  .header-2lvl
+    .logo
+      margin-top: 33px
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px)
+  #preloader
+    display: none
+  .header-2lvl
+    .logo
+      p:first-child
+        white-space: normal
+    .work-time
+      margin-top: 22px
+      .work-words
+        white-space: normal
+  .upper-head
+    padding: 0
+    .call-act-cont
+      margin-top: 6px
+  .basket-btn
+    margin-top: 7px
+  .hamburger
+    margin-top: 4px
+  .header-3lvl
+    .find-block
+      height: 65px
+      .find-txt
+        max-width: 95%
+        margin-left: 14px
+  #main-slider
+    .content-slider
+      width: 88%
+      padding: 40px
+      margin-left: 0
+  .slider-controls
+    top: 15%!important
+  .news-feed
+    padding-right: 0px
+    margin-top: 20px
+  .ord
+    margin-top: 33px
+  #my-footer
+    .social-links
+      margin: 12px 0
+  .catalog-main
+    .catalog-prev
+      .item
+        padding-right: 15px
+        .prev
+          height: 250px
+          &:after
+            content: ''
+            width: 100%
+            height: 100%
+            position: absolute
+            background-color: $default-color
+            transition: opacity .5s ease, height .5s ease
+            opacity: 0.7
+            left: 0px
+            right: 0px
+            top: 0px
+            bottom: 0px
+            z-index: 0
+        .catalog-content
+          ul
+            opacity: 1
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 575px)
+  .header-2lvl
+    .logo
+      a
+        display: inline-block
+        width: 100%
+        text-align: center
+      .txt-logo
+        font-size: 41px
+      p
+        text-align: center
+  .header-3lvl
+    padding: 0
+    .find-block
+      .find-txt
+        max-width: 92%
+        margin-left: 6px
+        margin: 0
+  #preloader
+    display: none
+  .upper-head
+    .call-act-cont
+      text-align: left
+      margin-bottom: 15px
+      a
+        width: 100%
+        margin-bottom: 20px
+    padding: 0px
+    .basket-cont
+      text-align: left
+  .header-2lvl
+    .soc-lng-pnl
+      text-align: center
+    .logo
+      p:first-child
+        white-space: nowrap
+        margin-bottom: 0px
+    .work-time
+      margin-top: 0px
+      .work-words
+        white-space: normal
+    .social-links
+      text-align: left
+      margin-top: 10px
+      margin-bottom: 10px
+    .en-ver
+      text-align: left
+    .map-site
+      text-align: left
+  .news-feed
+    margin-top: 20px
+    .news-item
+      padding-right: 15px
+  .find-cont
+    height: 56px
+  .catalog-main
+    .catalog-prev
+      .item
+        padding-right: 15px
+        .prev
+          height: 425px
+          &:after
+            content: ''
+            width: 100%
+            height: 100%
+            position: absolute
+            background-color: $default-color
+            transition: opacity .5s ease, height .5s ease
+            opacity: 0.7
+            left: 0px
+            right: 0px
+            top: 0px
+            bottom: 0px
+            z-index: 0
+        .catalog-content
+          ul
+            opacity: 1
+  #my-footer
+    .pw-logo-cont
+      text-align: center
+    .header-2lvl
+      text-align: center
+      padding: 0px
+    .social-links
+      text-align: center
+    .discr2
+      margin-top: -9px
