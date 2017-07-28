@@ -42,6 +42,8 @@
     .work-time
       .work-words
         white-space: normal
+  .filter-cont
+    display: none
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 991px)
   .content-slider
@@ -94,6 +96,25 @@
   .header-2lvl
     .logo
       margin-top: 33px
+  .open-filter
+    width: 45px
+    height: 45px
+    text-align: center
+    padding: 0px
+    .fa
+      line-height: 43px
+      padding: 0px
+    .txt
+      display: none
+  .catalog-container
+    .find-block
+      right: 0px
+      top: 15px
+      .find-txt
+        left: -20px
+      .find-btn
+        top: -32px
+        right: 14px
 /* Small Devices, Tablets */
 @media only screen and (max-width : 767px)
   #preloader
@@ -157,7 +178,23 @@
         .catalog-content
           ul
             opacity: 1
-
+  .catalog-container
+    .find-block
+      left: 0px
+      top: 15px
+      .find-txt
+        width: calc(100% - 35px)
+        max-width: none
+        left: -14px
+      .find-btn
+        top: -32px
+        right: 14px
+        right: 27px
+  .catalog-cont
+    padding-left: 15px
+    &>.row:nth-of-type(1)
+      background: $default-color
+      padding: 15px 0px
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 575px)
   .header-2lvl
@@ -246,3 +283,32 @@
       text-align: center
     .discr2
       margin-top: -9px
+  .catalog-prod
+    .item
+      .basket_btn
+        border: solid 1px #ffffff
+        width: 150px
+        opacity: 0.9
+        .basket-txt
+          top: 0px
+          display: inline-block
+          opacity: 1
+          transition-delay: .3s
+          visibility: visible
+          position: relative
+          font-weight: 500
+  .pagination
+    .txt
+      display: none
+    .arr
+      min-width: 32px
+      .fa
+        padding: 0!important
+  .catalog-container
+    .sorting
+      padding-left: 15px
+  .open-filter
+    width: 100%
+    margin-bottom: 20px
+    .txt
+      display: inline-block

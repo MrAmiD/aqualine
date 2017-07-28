@@ -34,6 +34,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/OwlCarousel2-2.2.1/dist/owl.carousel.min.js',
 		'app/libs/fancybox-master/dist/jquery.fancybox.js',
 		'app/libs/mmenu/jquery.mmenu.all.js',
+		'app/libs/noUiSlider/nouislider.min.js',
 		'app/js/jquery.maskedinput.min.js',
 		'app/js/common.min.js', // Всегда в конце
 		])

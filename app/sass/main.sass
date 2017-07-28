@@ -752,7 +752,8 @@ a
 	padding: 40px 0
 	img
 		max-width: 100%
-
+.catalog-cont
+	padding-left: 25px
 .catalog-main
 	margin-top: $margin-block
 	.catalog-prev
@@ -872,7 +873,7 @@ a
 	-webkit-border-radius: 4px
 	border-radius: 4px
 	margin: 34px 0px
-	margin-bottom: 14px
+	margin-bottom: 40px
 	.active
 		color: #000 !important
 	li
@@ -884,8 +885,23 @@ a
 		content: "/\00a0"
 		padding: 0 5px
 		color: #ccc
+.catalog-head
+	padding: 0px
+	position: relative
+	margin-left: 24px
+	&:after
+		content: "\f2cd"
+		font-family: FontAwesome
+		position: absolute
+		top: -36px
+		left: -24px
+		font-size: 70px
+		color: rgba($default-color, 0.8)
+		z-index: -1
 .catalog-container
-	margin-top: 35px
+	margin-top: 0px
+	.findb-cont
+		padding-right: 5px
 	.find-block
 		position: relative
 		top: 0px
@@ -910,6 +926,11 @@ a
 			border-left: solid 1px #e5dfd6
 	.sorting
 		position: relative
+		padding-left: 5px
+		white-space: nowrap
+		.sort
+			.fa
+				display: inline-block
 		.sorting-cont
 			position: relative
 			top: 50%
@@ -928,29 +949,47 @@ a
 			.txt
 				border-bottom: 1px dashed $accent2
 				transition: all .3s ease
+				padding-left: 7px
 		.fa
-			padding-right: 7px
+			padding-right: 0px
 	.h2
 		margin-bottom: 20px
 .catalog-prod
 	margin-top: 20px
+	.col-12
+		padding: 0 2px
 	.item
-		padding-left: 10px
-		padding-right: 10px
-		padding-bottom: 10px
-		padding-top: 10px
+		padding: 5px
 		position: relative
 		border: solid 1px transparent
 		border-radius: 5px
+		.detail-discr
+			display: none
 		&:hover
-			border-color: $accent
+			border-color: $accent2
+			.prod_name
+				height: 74%
+				p
+					display: block
+					max-height: none
+					overflow: hidden
+					&.detail-discr
+						display: block
 		.prod_name
 			position: absolute
-			bottom: 10px
+			bottom: 5px
 			padding: 10px 20px
 			background-color: rgba($default-color, 0.7)
-			width: calc(100% - 20px)
+			width: calc(100% - 10px)
 			transition: all .3s ease
+			height: 38%
+			overflow: hidden
+			p
+				display: block
+				max-height: 37px
+				overflow: hidden
+				&.detail-discr
+					display: none
 			.h3
 				font-weight: 100
 				text-align: left
@@ -959,7 +998,7 @@ a
 				&:after
 					content: ''
 					width: 60px
-					background-color: $accent
+					background-color: $accent2
 					position: absolute
 					height: 2px
 					left: 0
@@ -976,25 +1015,29 @@ a
 			position: absolute
 			top: 0px
 			display: inline-block
-			background: $default-color
+			background: rgba($black, 0.7)
 			text-align: center
 			border-radius: 30px
 			right: 20px
 			top: 15px
 			border: solid 1px transparent
 			transition: all .3s ease
+			opacity: 0.5
+			.fa
+				color: #ffffff
 			.basket-txt
 				opacity: 0
 				display: block
-				color: $accent
+				color: #ffffff
 				position: absolute
 				top: 0px
 				width: 100px
 				visibility: hidden
 				font-weight: 700
 			&:hover
-				border: solid 1px $accent
+				border: solid 1px #ffffff
 				width: 150px
+				opacity: 0.9
 				.basket-txt
 					top: 0px
 					display: inline-block
@@ -1015,6 +1058,267 @@ a
 				line-height: 50px
 				transform: rotate(0deg)
 				transition: transform 1s ease
+.pag-cont
+	text-align: center
+.more-btn-cont
+	text-align: center
+	margin-top: 20px
+	.more-btn
+		border: solid 1px #b4b4b4
+		border-radius: 25px
+		max-width: 250px
+		display: inline-block
+		padding: 5px 30px
+		font-size: 12px
+		font-weight: 700
+		transition: all .4s ease
+		&:hover
+			background-color: transparent
+			border-color: $accent
+			color: $accent
+
+.pagination
+	padding: 0px
+	display: inline-block
+	margin-top: 20px
+	.arr
+		min-width: 95px
+		min-height: 32px
+		border: solid 1px #b4b4b4
+		border-radius: 2px
+		line-height: 30px
+		font-size: 12px
+		font-weight: 500
+		border-radius: 30px
+		&.disabled
+			a
+				color: #b4b4b4
+				pointer-events: none
+				cursor: default
+			&:hover
+				background-color: transparent
+				border-color: #b4b4b4
+		&.prev
+			.fa
+				padding-right: 10px
+		&.next
+			.fa
+				padding-left: 10px
+	li
+		margin-bottom: 15px
+		margin-right: 10px
+		width: 20px
+		height: 20px
+		display: inline-block
+		text-align: center
+		line-height: 16px
+		border-radius: 50px
+		border: solid 1px transparent
+		position: relative
+		transition: all .3s ease
+		&.dots
+			border: none
+		&:hover
+			background-color: transparent
+			border-color: $accent
+		a
+			font-size: 11px
+			font-weight: 700
+			display: inline-block
+			width: 100%
+			height: 100%
+			&:hover
+				text-decoration: none
+				color: $accent
+		&:last-child
+			margin-right: 0px
+		&.active
+			background-color: $accent
+			a
+				color: #ffffff
+.filter-cont
+	.h3
+		font-size: 18px
+		font-weight: bold
+	.filter-items
+		min-height: 350px
+		background: rgba($default-color, 0.7)
+		padding-right: 15px
+		border-radius: 5px
+		padding: 20px 10px
+		.item
+			border: 1px solid rgba($accent, 0.7)
+			margin-bottom:  10px
+			background: #fff
+			border-radius: 5px
+			padding: 10px 20px
+input[type="checkbox"]
+	&:not(:checked), &:checked
+		position: absolute
+		left: -9999px
+	&:not(:checked) + label, &:checked + label
+		position: relative
+		padding-left: 1.95em
+		cursor: pointer
+	&:not(:checked) + label:before, &:checked + label:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 3px
+		width: 1.25em
+		height: 1.25em
+		border: 2px solid #ccc
+		background: #fff
+		border-radius: 4px
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+	&:not(:checked) + label:after, &:checked + label:after
+		content: '✔'
+		position: absolute
+		top: .2em
+		left: .3em
+		font-size: 1.3em
+		line-height: 0.8
+		color: $accent
+		transition: all .2s
+	&:not(:checked) + label:after
+		opacity: 0
+		transform: scale(0)
+	&:checked + label:after
+		opacity: 1
+		transform: scale(1)
+	&:disabled
+		&:not(:checked) + label:before
+			box-shadow: none
+			border-color: #bbb
+			background-color: #ddd
+		&:checked + label
+			&:before
+				box-shadow: none
+				border-color: #bbb
+				background-color: #ddd
+			&:after
+				color: #999
+		+ label
+			color: #aaa
+	&:checked:focus + label:before, &:not(:checked):focus + label:before
+		border: 2px dotted $accent
+label:hover:before
+	border: 2px solid $accent !important
+.fltr-menu
+	height: 172px
+	overflow: hidden
+	transition: all .5s ease
+	margin-bottom: 0
+	label
+		font-size: 16px
+.show-all
+	display: inline-block
+	width: 100%
+	text-align: right
+	&:focus, &:hover
+		color: $accent
+.range-slider-cont
+	margin-top: 10px
+	.price-in
+		display: inline-block
+		width: 65px
+		margin-bottom: 20px
+		border: solid 2px $default-color!important
+		padding: 0 10px
+		border-radius: 5px
+		box-shadow: none!important
+		font-family: $default-font
+		font-size: 14px
+		font-weight: 700
+.noUi-connect
+	background: $accent
+.noUi-horizontal .noUi-handle
+	width: 34px
+	height: 28px
+	left: -17px
+	top: -6px
+	border-radius: 70px
+	width: 28px
+	outline: none!important
+	&:hover
+		cursor: pointer
+.noUi-handle:after, .noUi-handle:before
+	width: 0
+.fltr-btn
+	background: $accent
+	color: #ffffff
+	padding: 5px 10px
+	display: inline-block
+	font-size: 14px
+	font-weight: 700
+	border-radius: 30px
+	width: 100%
+	text-align: center
+	border: solid 1px transparent
+	margin-top: 10px
+	&:hover
+		color: $black
+		border-color: $accent
+		background: #ffffff
+.manager-popup
+	min-height: 350px
+	background: rgba($default-color, 0.7)
+	padding-right: 15px
+	border-radius: 5px
+	padding: 20px 10px
+	margin-top: 20px
+	border: solid 1px $accent2
+	.manager_ava
+		width: 150px
+		height: 150px
+		margin: auto
+		border-radius: 50%
+		background-size: contain!important
+		background-position: center!important
+		background-repeat: no-repeat!important
+		background-color: #ffffff !important
+	.manager_cont
+		margin-top: 15px
+		padding: 0 10px
+		.fltr-btn
+			background: $accent2
+			&:hover
+				color: $black
+				border-color: $accent2
+				background: #ffffff
+		a
+			display: block
+		.fa
+			padding-right: 10px
+.open-filter-cont
+	position: relative
+.open-filter
+	display: inline-block
+	border: solid 1px $accent2
+	border-radius: 5px
+	padding: 4px 10px
+	position: relative
+	top: 50%
+	transform: translateY(-50%)
+	font-size: 15px
+	&:hover
+		background-color: $accent2
+		color: #ffffff
+	.fa
+		padding-right: 10px
+
+#my-filter
+	.filter-items
+		display: block
+		padding-top: 0px
+	.filter-cont
+		background: $default-color
+	.mm-title
+		font-size: 25px
+		font-weight: 700
+		font-family: $default-font
+		color: $black
+		text-align: left
 
 @import "media" // Всегда в конце
 

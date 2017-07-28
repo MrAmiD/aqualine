@@ -117,6 +117,22 @@ $(function() {
     //         console.log('preloader hide');
     //     }, 2000);
     // });
+
+    //    Filter open
+    $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
+    $("#my-filter").mmenu({
+        "extensions": [
+            "fx-panels-zoom",
+            "effect-menu-slide",
+            "pagedim-black"
+        ],
+        "offCanvas": {
+            "position": "left"
+        },
+        "navbar": {
+            "title": "Фильтр"
+        }
+    });
     setTimeout( function () {
         $('#preloader').fadeOut('slow',function(){$(this).remove();});
         console.log('preloader hide');
@@ -270,6 +286,112 @@ $(function() {
         $('body,html').animate({
             scrollTop : 0                       // Scroll to top of body
         }, 500);
+    });
+
+//    Sorting
+    $('.sort').click(function (){
+        if($(this).find('.fa').hasClass('fa-rotate-180')){
+            $(this).find('.fa').removeClass('fa-rotate-180');
+            $(this).removeClass('active');
+        }
+        else{
+            $(this).find('.fa').addClass('fa-rotate-180');
+            $(this).addClass('active');
+        }
+    });
+    $('.show-all').click(function () {
+        var sum_h = 0;
+        var sum_5 = 0;
+        if(!$(this).hasClass('active')){
+            $('#'+$(this).data().id + ' li').each(function () {
+                sum_h = sum_h + $(this).height();
+            });
+            $('#'+$(this).data().id).height(sum_h);
+            $(this).addClass('active');
+            $(this).html('- Свернуть');
+        }
+        else{
+            $(this).removeClass('active');
+            $('#'+$(this).data().id + ' li').each(function (index) {
+                if (index < 5)
+                    sum_5 = sum_5 + $(this).height();
+            });
+            $('#'+$(this).data().id).height(sum_5)
+            $(this).html('+ Развернуть');
+        }
+        console.log(sum_h);
+    });
+    //Range price slider
+    var keypressSlider = document.getElementById('keypress');
+    var input0 = document.getElementById('input-with-keypress-0');
+    var input1 = document.getElementById('input-with-keypress-1');
+    var inputs = [input0, input1];
+
+    noUiSlider.create(keypressSlider, {
+        start: [$('#keypress').data().min, $('#keypress').data().max],
+        connect: true,
+        range: {
+            'min': $('#keypress').data().min,
+            'max': $('#keypress').data().max
+        }
+    });
+
+    keypressSlider.noUiSlider.on('update', function( values, handle ) {
+        inputs[handle].value = values[handle];
+    });
+
+    function setSliderHandle(i, value) {
+        var r = [null,null];
+        r[i] = value;
+        keypressSlider.noUiSlider.set(r);
+    }
+
+// Listen to keydown events on the input field.
+    inputs.forEach(function(input, handle) {
+
+        input.addEventListener('change', function(){
+            setSliderHandle(handle, this.value);
+        });
+
+        input.addEventListener('keydown', function( e ) {
+            var values = keypressSlider.noUiSlider.get();
+            var value = Number(values[handle]);
+            // [[handle0_down, handle0_up], [handle1_down, handle1_up]]
+            var steps = keypressSlider.noUiSlider.steps();
+
+            // [down, up]
+            var step = steps[handle];
+            var position;
+            // 13 is enter,
+            // 38 is key up,
+            // 40 is key down.
+            switch ( e.which ) {
+                case 13:
+                    setSliderHandle(handle, this.value);
+                    break;
+                case 38:
+                    // Get step to go increase slider value (up)
+                    position = step[1];
+                    // false = no step is set
+                    if ( position === false ) {
+                        position = 1;
+                    }
+                    // null = edge of slider
+                    if ( position !== null ) {
+                        setSliderHandle(handle, value + position);
+                    }
+                    break;
+                case 40:
+                    position = step[0];
+                    if ( position === false ) {
+                        position = 1;
+                    }
+                    if ( position !== null ) {
+                        setSliderHandle(handle, value - position);
+                    }
+                    break;
+            }
+        });
     });
 
 });
