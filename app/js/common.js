@@ -232,14 +232,14 @@ $(function() {
         navText: ['<div href="" class="control-btn owl-prev left-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>', '<div href="" class="control-btn owl-next right-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>'],
         smartSpeed: 700
     });
-    $('#brands-slider').owlCarousel({
+    $('#catalog-slider').owlCarousel({
         loop:true,
         nav:true,
-        items: 6,
-        navContainer: '#customNavBrand',
+        items: 3,
+        navContainer: '#customNavCatalog',
         navText: ['<div href="" class="control-btn owl-prev left-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>', '<div href="" class="control-btn owl-next right-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>'],
         smartSpeed: 700,
-        margin:50,
+        margin: 0,
         responsive:{
             0:{
                 items:1,
@@ -252,7 +252,7 @@ $(function() {
                 margin:0
             },
             1000:{
-                items:6,
+                items:4,
                 nav:true,
                 loop:true,
                 margin:0
@@ -388,7 +388,7 @@ $(function() {
     });
     //range star price
     $(".range-star-cont ul li").hover(function(){
-        if(!$(".range-star-cont").hasClass('disable')){
+        if(!$(".range-star-cont").hasClass('disable') && !$(".range-star-cont").hasClass('prod-range')){
             var  num = $(this).data().num;
             $('.range-star-cont ul li').removeClass('active');
             switch(num) {

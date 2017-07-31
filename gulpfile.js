@@ -35,6 +35,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/fancybox-master/dist/jquery.fancybox.js',
 		'app/libs/mmenu/jquery.mmenu.all.js',
 		'app/libs/noUiSlider/nouislider.min.js',
+		'app/libs/fotorama-4.6.4/fotorama.js',
 		'app/js/jquery.maskedinput.min.js',
 		'app/js/common.min.js', // Всегда в конце
 		])

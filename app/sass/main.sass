@@ -701,8 +701,27 @@ a
 		&:nth-child(2)
 			margin-top: 19px
 
-
-#customNavBrand
+.catalog-slider
+	position: relative
+	.catalog-prod
+		padding-right: 0px
+		padding-left: 20px
+	.slider-controls
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+		z-index: 1
+	.h2
+		font-weight: 700
+		&:after
+			content: ''
+			width: 80px
+			background-color: $accent
+			position: absolute
+			height: 2px
+			left: 15px
+			bottom: -7px
+#customNavCatalog
 	.control-btn
 		background: rgba($default-color, 0.7)
 		width: 40px
@@ -710,13 +729,14 @@ a
 		text-align: center
 		position: absolute
 		top: 50%
-		transform: translateY(-50%)
 		border-radius: 50%
 		cursor: pointer
+		border: solid 1px $accent2
 		.fa
 			line-height: 40px
+			color: $accent2
 	.owl-prev
-		left: 0px
+		left: -11px
 		z-index: 2
 	.owl-next
 		right: 0px
@@ -1341,6 +1361,7 @@ label
 		transition: all 0.3s ease
 		li
 			display: inline-block
+			margin-right: 9px
 			&.active
 				.fa
 					color: $accent2
@@ -1363,5 +1384,75 @@ label
 			list-style: circle
 	img
 		max-width: 100%
+.product-card
+	.fotorama__nav
+		text-align: left
+	.fotorama__thumb-border
+		border-color: $accent2
+	.code-cont
+		p
+			font-size: 13px
+		.txt-code
+			color: $accent
+			font-weight: 700
+			font-size: 15px
+	.head-pr
+		.h2
+			margin-bottom: 5px
+	.rang-price-cont
+		background: rgba($default-color, 0.3)
+		padding: 15px 15px
+		border: solid 1px $accent2
+		margin: 0px
+		border-radius: 5px
+		margin-bottom: 20px
+		p
+			margin: 0px
+	.btn-tr
+		background: #ffffff
+		color: $black
+		border: solid 1px $accent
+		display: inline-block
+		max-width: 150px
+		&:hover
+			background: $accent
+			color: #ffffff
+	.btn-cont
+		margin-top: 0px
+	.prod-prop-cont
+		margin-top: 40px
+		.h4
+			border-bottom: 1px solid $accent
+			padding-bottom: 8px
+		.logo-brand
+			width: 70px
+			height: 70px
+			object-fit: cover
+			border: solid 1px $default-color
+			border-radius: 5px
+			padding: 5px
+		.item
+			p
+				display: inline-block
+			a
+				text-decoration: underline
+			margin-bottom: 25px
+	.product-properties
+		width: 100%
+		td
+			padding-left: 40px
+		tr
+			border-bottom: solid 1px $default-color
+.brand-link-cont
+	margin-top: 40px
+	border-left: 15px solid $accent
+	.h3
+		font-weight: 700
+	a
+		text-decoration: underline
+.vert_cent
+	position: relative
+	top: 50%
+	transform: translateY(-50%)
 @import "media" // Всегда в конце
 

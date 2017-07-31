@@ -30,7 +30,7 @@
 
 <body>
 <!--<div class="preloader" id="preloader">-->
-	<!--<div class="pulse"></div>-->
+<!--<div class="pulse"></div>-->
 <!--</div>-->
 
 
@@ -98,12 +98,12 @@
 				<div class="col-12 col-sm-6  col-lg-4 logo">
 					<!--<p>свет / плитка  / сантехника / ванны / аксесcуары</p>-->
 					<!--<a href="/" >-->
-						<!--<img src="img/logo.png" alt="aqualine-M">-->
+					<!--<img src="img/logo.png" alt="aqualine-M">-->
 					<!--</a>-->
 					<!--<p class="discr2">эксклюзивный дилер европейской сантехники</p>-->
 					<p>свет / плитка  / сантехника / ванны / аксесcуары</p>
 					 <a href="/" class="txt-logo">Aqualine-m</a>
-				 	<p class="discr2">эксклюзивный дилер европейской сантехники</p>
+					 	<p class="discr2">эксклюзивный дилер европейской сантехники</p>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-4 work-time">
 					<div class="works-kont">
@@ -747,12 +747,12 @@
 					<div class="col-12 col-sm-6 col-lg-4 logo">
 						<!--<p>свет / плитка  / сантехника / ванны / аксесcуары</p>-->
 						<!--<a href="/" >-->
-							<!--<img src="img/logo.png" alt="aqualine-M">-->
+						<!--<img src="img/logo.png" alt="aqualine-M">-->
 						<!--</a>-->
 						<!--<p class="discr2">эксклюзивный дилер европейской сантехники</p>-->
 						<p>свет / плитка  / сантехника / ванны / аксесcуары</p>
 						 <a href="/" class="txt-logo">Aqualine-m</a>
-					 	<p class="discr2">эксклюзивный дилер европейской сантехники</p>
+						 	<p class="discr2">эксклюзивный дилер европейской сантехники</p>
 					</div>
 					<div class="col-12 col-sm-6 col-lg-4 work-time">
 						<div class="works-kont">
@@ -778,26 +778,26 @@
 							614000 РФ, Пермский Край, г.Пермь, ул. Революции, 4
 						</p>
 						<!--<div class="sub-m">-->
-							<!--<ul>-->
-								<!--<li><a href="">-->
-									<!--Покупателю-->
-								<!--</a></li>-->
-								<!--<li><a href="">-->
-									<!--Партнерам-->
-								<!--</a></li>-->
-								<!--<li><a href="">-->
-									<!--Производители-->
-								<!--</a></li>-->
-								<!--<li><a href="">-->
-									<!--Новости-->
-								<!--</a></li>-->
-								<!--<li><a href="">-->
-									<!--О магазине-->
-								<!--</a></li>-->
-								<!--<li><a href="">-->
-									<!--Контакты-->
-								<!--</a></li>-->
-							<!--</ul>-->
+						<!--<ul>-->
+						<!--<li><a href="">-->
+						<!--Покупателю-->
+						<!--</a></li>-->
+						<!--<li><a href="">-->
+						<!--Партнерам-->
+						<!--</a></li>-->
+						<!--<li><a href="">-->
+						<!--Производители-->
+						<!--</a></li>-->
+						<!--<li><a href="">-->
+						<!--Новости-->
+						<!--</a></li>-->
+						<!--<li><a href="">-->
+						<!--О магазине-->
+						<!--</a></li>-->
+						<!--<li><a href="">-->
+						<!--Контакты-->
+						<!--</a></li>-->
+						<!--</ul>-->
 						<!--</div>-->
 					</div>
 					<div class="col-12 col-md-6 col-lg-6 ord">
@@ -883,8 +883,43 @@
 	</div>
 </div>
 
-	<link rel="stylesheet" href="css/main.min.css">
-	<script src="js/scripts.min.js"></script>
-
+<link rel="stylesheet" href="css/main.min.css">
+<script src="js/scripts.min.js"></script>
+<script>
+    function MyFilterInit() {
+        $("#my-filter").mmenu({
+            "extensions": [
+                "fx-panels-zoom",
+                "effect-menu-slide",
+                "pagedim-black"
+            ],
+            "offCanvas": {
+                "position": "left"
+            },
+            "navbar": {
+                "title": "Фильтр"
+            }
+        });
+        //RangeSliderInit();
+    }
+    $(document).ready(function () {
+        //RangeSliderInit();
+        if($(window).width() <= 1200){
+            $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
+            MyFilterInit();
+        }
+        $(window).resize(function() {
+            if($(window).width() <= 1200){
+                $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
+                $('#keypress').html(' ');
+                MyFilterInit();
+            }
+            if($(window).width() > 1200){
+                $('#keypress').html(' ');
+                $("#my-filter .filter-cont").html(' ');
+            }
+        });
+    })
+</script>
 </body>
 </html>
