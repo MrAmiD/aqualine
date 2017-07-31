@@ -1256,7 +1256,7 @@ label:hover:before
 	text-align: center
 	border: solid 1px transparent
 	margin-top: 10px
-	&:hover
+	&:hover, &:focus
 		color: $black
 		border-color: $accent
 		background: #ffffff
@@ -1282,10 +1282,11 @@ label:hover:before
 		padding: 0 10px
 		.fltr-btn
 			background: $accent2
-			&:hover
+			&:hover, &:focus
 				color: $black
 				border-color: $accent2
 				background: #ffffff
+				outline: none
 		a
 			display: block
 		.fa
@@ -1319,6 +1320,48 @@ label:hover:before
 		font-family: $default-font
 		color: $black
 		text-align: left
-
+.range-star-cont
+	label
+		user-select: none
+	&.disable
+		ul
+			cursor: not-allowed!important
+			opacity: 0.3
+			li
+				cursor: not-allowed!important
+				.fa
+					cursor: not-allowed!important
+		p
+			opacity: 0.3
+			cursor: not-allowed!important
+	label
+		font-size: 16px
+	ul
+		margin: 0px
+		transition: all 0.3s ease
+		li
+			display: inline-block
+			&.active
+				.fa
+					color: $accent2
+					cursor: pointer
+		.fa
+			color: $default-color
+			//text-shadow: -1px -1px 0 $accent2, 1px -1px 0 $accent2, -1px 1px 0 $accent2, 1px 1px 0 $accent2
+			font-size: 28px
+	p
+		transition: all 0.3s ease
+		font-size: 12px
+		font-weight: bold
+		color: #b52e28
+		margin-bottom: 10px
+.content
+	ul
+		list-style: katakana
+		padding-left: 20px
+		li
+			list-style: circle
+	img
+		max-width: 100%
 @import "media" // Всегда в конце
 

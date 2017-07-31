@@ -119,20 +119,114 @@ $(function() {
     // });
 
     //    Filter open
-    $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
-    $("#my-filter").mmenu({
-        "extensions": [
-            "fx-panels-zoom",
-            "effect-menu-slide",
-            "pagedim-black"
-        ],
-        "offCanvas": {
-            "position": "left"
-        },
-        "navbar": {
-            "title": "Фильтр"
+    //Range price slider
+    function setSliderHandle(i, value) {
+        var r = [null,null];
+        r[i] = value;
+        keypressSlider.noUiSlider.set(r);
+    }
+
+    function RangeSliderInit() {
+        //Range price slider
+        var keypressSlider = document.getElementById('keypress');
+        var input0 = document.getElementById('input-with-keypress-0');
+        var input1 = document.getElementById('input-with-keypress-1');
+        var inputs = [input0, input1];
+
+        noUiSlider.create(keypressSlider, {
+            start: [$('#keypress').data().min, $('#keypress').data().max],
+            connect: true,
+            range: {
+                'min': $('#keypress').data().min,
+                'max': $('#keypress').data().max
+            }
+        });
+
+        keypressSlider.noUiSlider.on('update', function( values, handle ) {
+            inputs[handle].value = values[handle];
+        });
+
+
+// Listen to keydown events on the input field.
+        inputs.forEach(function(input, handle) {
+            input.addEventListener('change', function(){
+                setSliderHandle(handle, this.value);
+            });
+
+            input.addEventListener('keydown', function( e ) {
+                var values = keypressSlider.noUiSlider.get();
+                var value = Number(values[handle]);
+                // [[handle0_down, handle0_up], [handle1_down, handle1_up]]
+                var steps = keypressSlider.noUiSlider.steps();
+                // [down, up]
+                var step = steps[handle];
+                var position;
+                // 13 is enter,
+                // 38 is key up,
+                // 40 is key down.
+                switch ( e.which ) {
+                    case 13:
+                        setSliderHandle(handle, this.value);
+                        break;
+                    case 38:
+                        // Get step to go increase slider value (up)
+                        position = step[1];
+                        // false = no step is set
+                        if ( position === false ) {
+                            position = 1;
+                        }
+                        // null = edge of slider
+                        if ( position !== null ) {
+                            setSliderHandle(handle, value + position);
+                        }
+                        break;
+                    case 40:
+                        position = step[0];
+                        if ( position === false ) {
+                            position = 1;
+                        }
+                        if ( position !== null ) {
+                            setSliderHandle(handle, value - position);
+                        }
+                        break;
+                }
+            });
+        });
+    }
+    RangeSliderInit();
+    function MyFilterInit() {
+        $("#my-filter").mmenu({
+            "extensions": [
+                "fx-panels-zoom",
+                "effect-menu-slide",
+                "pagedim-black"
+            ],
+            "offCanvas": {
+                "position": "left"
+            },
+            "navbar": {
+                "title": "Фильтр"
+            }
+        });
+        RangeSliderInit();
+    }
+    if($(window).width() <= 1200){
+        $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
+        MyFilterInit();
+    }
+    $(window).resize(function() {
+        if($(window).width() <= 1200){
+            $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
+            $('#keypress').html(' ');
+            MyFilterInit();
+        }
+        if($(window).width() > 1200){
+            $('#keypress').html(' ');
+            $("#my-filter .filter-cont").html(' ');
         }
     });
+
+
     setTimeout( function () {
         $('#preloader').fadeOut('slow',function(){$(this).remove();});
         console.log('preloader hide');
@@ -321,77 +415,73 @@ $(function() {
         }
         console.log(sum_h);
     });
-    //Range price slider
-    var keypressSlider = document.getElementById('keypress');
-    var input0 = document.getElementById('input-with-keypress-0');
-    var input1 = document.getElementById('input-with-keypress-1');
-    var inputs = [input0, input1];
+    //range star price
+    $(".range-star-cont ul li").hover(function(){
+        if(!$(".range-star-cont").hasClass('disable')){
+            var  num = $(this).data().num;
+            $('.range-star-cont ul li').removeClass('active');
+            switch(num) {
+                case 5:
+                    $(".range-star-cont ul li:nth-child(5)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(4)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(3)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(2)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(1)").addClass('active');
 
-    noUiSlider.create(keypressSlider, {
-        start: [$('#keypress').data().min, $('#keypress').data().max],
-        connect: true,
-        range: {
-            'min': $('#keypress').data().min,
-            'max': $('#keypress').data().max
+                    $('.range-star-cont p').html('Премиум');
+                    $(".range-star-cont ul li:nth-child(5)").addClass('fltr-active');
+                    break;
+                case 4:
+                    $(".range-star-cont ul li:nth-child(4)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(3)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(2)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(1)").addClass('active');
+
+                    $('.range-star-cont p').html('Выше среднего');
+                    $(".range-star-cont ul li:nth-child(4)").addClass('fltr-active');
+                    break;
+                case 3:
+                    $(".range-star-cont ul li:nth-child(3)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(2)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(1)").addClass('active');
+
+                    $('.range-star-cont p').html('Средний');
+                    $(".range-star-cont ul li:nth-child(3)").addClass('fltr-active');
+                    break;
+                case 2:
+                    $(".range-star-cont ul li:nth-child(2)").addClass('active');
+                    $(".range-star-cont ul li:nth-child(1)").addClass('active');
+
+                    $('.range-star-cont p').html('Ниже среднего');
+                    $(".range-star-cont ul li:nth-child(2)").addClass('fltr-active');
+                    break;
+                case 1:
+                    $(".range-star-cont ul li:nth-child(1)").addClass('active');
+
+                    $('.range-star-cont p').html('Бюджетный');
+                    $(".range-star-cont ul li:nth-child(1)").addClass('fltr-active');
+                    break;
+                default:
+                    console.log('def');
+            }
+
+            $(this).addClass('active');
         }
     });
+    //set initial state.
+    $('#AllProdPrice').val($(this).is(':checked'));
 
-    keypressSlider.noUiSlider.on('update', function( values, handle ) {
-        inputs[handle].value = values[handle];
-    });
+    $('#AllProdPrice').change(function() {
+        console.log('#AllProdPrice changed');
+        if($(this).is(":checked")) {
+            $('.range-star-cont').css('cursor', 'not-allowed!important');
+            $('.range-star-cont').addClass('disable');
+        }
+        else{
+            $('.range-star-cont').removeClass('disable');
+        }
 
-    function setSliderHandle(i, value) {
-        var r = [null,null];
-        r[i] = value;
-        keypressSlider.noUiSlider.set(r);
-    }
 
-// Listen to keydown events on the input field.
-    inputs.forEach(function(input, handle) {
-
-        input.addEventListener('change', function(){
-            setSliderHandle(handle, this.value);
-        });
-
-        input.addEventListener('keydown', function( e ) {
-            var values = keypressSlider.noUiSlider.get();
-            var value = Number(values[handle]);
-            // [[handle0_down, handle0_up], [handle1_down, handle1_up]]
-            var steps = keypressSlider.noUiSlider.steps();
-
-            // [down, up]
-            var step = steps[handle];
-            var position;
-            // 13 is enter,
-            // 38 is key up,
-            // 40 is key down.
-            switch ( e.which ) {
-                case 13:
-                    setSliderHandle(handle, this.value);
-                    break;
-                case 38:
-                    // Get step to go increase slider value (up)
-                    position = step[1];
-                    // false = no step is set
-                    if ( position === false ) {
-                        position = 1;
-                    }
-                    // null = edge of slider
-                    if ( position !== null ) {
-                        setSliderHandle(handle, value + position);
-                    }
-                    break;
-                case 40:
-                    position = step[0];
-                    if ( position === false ) {
-                        position = 1;
-                    }
-                    if ( position !== null ) {
-                        setSliderHandle(handle, value - position);
-                    }
-                    break;
-            }
-        });
     });
 
 });
