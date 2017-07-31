@@ -120,12 +120,14 @@ $(function() {
 
     //    Filter open
     //Range price slider
+    /*
     function setSliderHandle(i, value) {
         var r = [null,null];
         r[i] = value;
         keypressSlider.noUiSlider.set(r);
     }
-
+    */
+    /*
     function RangeSliderInit() {
         //Range price slider
         var keypressSlider = document.getElementById('keypress');
@@ -193,38 +195,7 @@ $(function() {
             });
         });
     }
-    RangeSliderInit();
-    function MyFilterInit() {
-        $("#my-filter").mmenu({
-            "extensions": [
-                "fx-panels-zoom",
-                "effect-menu-slide",
-                "pagedim-black"
-            ],
-            "offCanvas": {
-                "position": "left"
-            },
-            "navbar": {
-                "title": "Фильтр"
-            }
-        });
-        RangeSliderInit();
-    }
-    if($(window).width() <= 1200){
-        $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
-        MyFilterInit();
-    }
-    $(window).resize(function() {
-        if($(window).width() <= 1200){
-            $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
-            $('#keypress').html(' ');
-            MyFilterInit();
-        }
-        if($(window).width() > 1200){
-            $('#keypress').html(' ');
-            $("#my-filter .filter-cont").html(' ');
-        }
-    });
+    */
 
 
     setTimeout( function () {
@@ -471,7 +442,7 @@ $(function() {
     //set initial state.
     $('#AllProdPrice').val($(this).is(':checked'));
 
-    $('#AllProdPrice').change(function() {
+    $('.range-star-cont input').change(function() {
         console.log('#AllProdPrice changed');
         if($(this).is(":checked")) {
             $('.range-star-cont').css('cursor', 'not-allowed!important');

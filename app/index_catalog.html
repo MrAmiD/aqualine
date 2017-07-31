@@ -885,41 +885,6 @@
 
 	<link rel="stylesheet" href="css/main.min.css">
 	<script src="js/scripts.min.js"></script>
-	<script>
-        function MyFilterInit() {
-            $("#my-filter").mmenu({
-                "extensions": [
-                    "fx-panels-zoom",
-                    "effect-menu-slide",
-                    "pagedim-black"
-                ],
-                "offCanvas": {
-                    "position": "left"
-                },
-                "navbar": {
-                    "title": "Фильтр"
-                }
-            });
-            //RangeSliderInit();
-        }
-		$(document).ready(function () {
-            //RangeSliderInit();
-            if($(window).width() <= 1200){
-                $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
-                MyFilterInit();
-            }
-            $(window).resize(function() {
-                if($(window).width() <= 1200){
-                    $("#my-filter .filter-cont").html($('.catalog-container .filter-cont').html());
-                    $('#keypress').html(' ');
-                    MyFilterInit();
-                }
-                if($(window).width() > 1200){
-                    $('#keypress').html(' ');
-                    $("#my-filter .filter-cont").html(' ');
-                }
-            });
-        })
-	</script>
+
 </body>
 </html>
