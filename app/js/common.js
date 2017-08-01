@@ -238,20 +238,26 @@ $(function() {
         items: 3,
         navContainer: '#customNavCatalog',
         navText: ['<div href="" class="control-btn owl-prev left-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>', '<div href="" class="control-btn owl-next right-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>'],
-        smartSpeed: 700,
+        smartSpeed: 170,
         margin: 0,
+        slideBy: 'page',
         responsive:{
             0:{
                 items:1,
                 nav:true,
                 margin:0
             },
-            600:{
+            767:{
+                items:2,
+                nav:false,
+                margin:0
+            },
+            991:{
                 items:3,
                 nav:false,
                 margin:0
             },
-            1000:{
+            1200:{
                 items:4,
                 nav:true,
                 loop:true,
