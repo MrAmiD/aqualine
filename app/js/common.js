@@ -107,7 +107,27 @@ function ActFormValid(){
     return false;
 };
 
+//Tabs open
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
 
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
 
 $(function() {
     //	Preloader
@@ -202,37 +222,6 @@ $(function() {
         $('#preloader').fadeOut('slow',function(){$(this).remove();});
         console.log('preloader hide');
     }, 1000);
-    //Липкая шапка
-    $('.fotorama').on('fotorama:ready', function (e, fotorama) {
-        var h_hght = $('#my-header').height() + $('.breadcrumb').height(); // высота шапки
-        var h_mrg = 0;    // отступ когда шапка уже не видна
-
-        var top = $(this).scrollTop();
-
-        if(top > h_hght){
-            $('.slick-gallery').css('top', h_mrg);
-        }
-
-        var MaxRange = $('.prod-d-cont').height() - $('.slick-gallery').height(); //На сколько можно сдвинуть галлерею
-
-        $(window).resize(function() {
-            h_hght = $('#my-header').height() + $('.breadcrumb').height();
-            MaxRange = $('.prod-d-cont').height() - $('.slick-gallery').height(); //На сколько можно сдвинуть галлерею
-        });
-
-        $(window).scroll(function () {
-            top = $(this).scrollTop();
-
-            if(top > h_hght){
-                $('.slick-gallery').css('top', top - h_hght);
-            }
-            if((top - h_hght) > MaxRange){
-                $('.slick-gallery').css('top', MaxRange - 20);
-            }
-        });
-        $(window).scroll();
-    });
-
 
 
 	// Custom JS
@@ -382,27 +371,27 @@ $(function() {
             $(this).addClass('active');
         }
     });
-    $('.show-all').click(function () {
+    $(document).on( "click", ".show-all", function() {
+        console.log('gg');
         var sum_h = 0;
         var sum_5 = 0;
         if(!$(this).hasClass('active')){
-            $('#'+$(this).data().id + ' li').each(function () {
+            $($(this).data().id + ' li').each(function () {
                 sum_h = sum_h + $(this).height();
             });
-            $('#'+$(this).data().id).height(sum_h);
+            $($(this).data().id).height(sum_h);
             $(this).addClass('active');
             $(this).html('- Свернуть');
         }
         else{
             $(this).removeClass('active');
-            $('#'+$(this).data().id + ' li').each(function (index) {
+            $($(this).data().id + ' li').each(function (index) {
                 if (index < 5)
                     sum_5 = sum_5 + $(this).height();
             });
-            $('#'+$(this).data().id).height(sum_5)
+            $($(this).data().id).height(sum_5)
             $(this).html('+ Развернуть');
         }
-        console.log(sum_h);
     });
     //range star price
     $(".range-star-cont ul li").hover(function(){
@@ -469,8 +458,14 @@ $(function() {
         else{
             $('.range-star-cont').removeClass('disable');
         }
-
-
     });
+
+
+    //    Default open Tabs
+
+    $("#defaultOpen11").click(function(){
+        $(this).addClass('active');
+    });
+    $("#defaultOpen11").click();
 
 });

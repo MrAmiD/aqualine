@@ -703,6 +703,7 @@ a
 
 .catalog-slider
 	position: relative
+	margin-top: 70px
 	.catalog-prod
 		padding-right: 0px
 		padding-left: 20px
@@ -1461,5 +1462,136 @@ label
 	z-index: 2
 	right: 0
 	left: 0px
+.brands-catalog
+	.item
+		.prev
+			border: solid 1px $default-color
+			border-radius: 5px
+.brand-head
+	min-height: 350px
+	img
+		border: solid 1px $default-color
+		border-radius: 5px
+	&:after
+		content: ''
+		background-image: -webkit-linear-gradient(top, rgba(76,76,76,0), rgba(19,19,19,0.6) 100%)
+		top: 0px
+		left: 0px
+		right: 0px
+		bottom: 0px
+		width: 100%
+		height: 100%
+		position: absolute
+		z-index: 0
+	.breadcrumb
+		position: relative
+		z-index: 1
+		.active
+			color: #ffffff!important
+		li
+			color: $default-color
+			a
+				color: $default-color
+	.h1
+		color: $accent2
+		font-size: 55px
+		font-weight: 700
+		z-index: 1
+		position: relative
+	p
+		color: #ffffff
+		font-size: 20px
+		z-index: 1
+		position: relative
+		text-shadow: 1px 1px 1px $black
+		margin: 0px
+		margin-bottom: 5px
+	.fa
+		padding-right: 10px
+	a
+		color: #ffffff
+		text-shadow: 1px 1px 1px $black
+		&:hover
+			color: #ffffff
+			text-decoration: underline
+	.brand-discr-short
+		background: rgba($default-color, 0.5)
+		border-radius: 5px
+		display: inline-block
+		padding: 20px 20px
+		min-height: 160px
+.tab-cont
+	padding: 0
+	padding-right: 15px
+	margin-top: 0px
+	position: relative
+	top: -32px
+	z-index: 1
+	padding-left: 15px
+	.head-pr
+		.h2
+			margin-bottom: 0px
+		p
+			color: $accent2
+
+/* Style the tab */
+div.tab
+	overflow: hidden
+	button
+		background-color: rgba($accent2, 0.5)
+		float: left
+		border: none
+		outline: none
+		cursor: pointer
+		padding-left: 0px
+		transition: 0.3s
+		color: #ffffff
+		padding: 2px 30px
+		display: inline-block
+		//background-color: #342a23
+		font-size: 16px
+		font-weight: 300
+		font-family: $default-font
+		position: relative
+		display: block
+		text-align: center
+		border-radius: 30px 30px 0 0
+		&:hover
+		//background-color: #342a23
+		&.active
+			background: rgba($accent, 0.5)
+			&:after
+				background: rgba($accent, 0.5)
+				z-index: -1
+/* Style the tab content */
+.tabcontent
+	display: none
+	padding: 6px 12px
+	//box-shadow: 0 0 10.27px 2.73px rgba(0,0,0,.07)
+	p
+		color: #847c79
+		padding-left: 15px
+	.head-pr
+		margin-bottom: 15px
+		p
+			padding-left: 0px
+.tabcontent
+	-webkit-animation: fadeEffect 1s
+	animation: fadeEffect 1s /* Fading effect takes 1 second */
+	padding: 38px 20px
+	.catalog-prod
+		margin-top: 0px
+@-webkit-keyframes fadeEffect
+	from
+		opacity: 0
+	to
+		opacity: 1
+
+@keyframes fadeEffect
+	from
+		opacity: 0
+	to
+		opacity: 1
+
 @import "media" // Всегда в конце
 
