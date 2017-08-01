@@ -203,25 +203,37 @@ $(function() {
         console.log('preloader hide');
     }, 1000);
     //Липкая шапка
-    var h_hght = 112; // высота шапки
-    var h_mrg = 0;    // отступ когда шапка уже не видна
+    $('.fotorama').on('fotorama:ready', function (e, fotorama) {
+        var h_hght = $('#my-header').height() + $('.breadcrumb').height(); // высота шапки
+        var h_mrg = 0;    // отступ когда шапка уже не видна
 
-    var elem = $('.menu-cont2');
-    var top = $(this).scrollTop();
+        var top = $(this).scrollTop();
 
-    if(top > h_hght){
-        elem.css('top', h_mrg);
-    }
-
-    $(window).scroll(function(){
-        top = $(this).scrollTop();
-
-        if (top+h_mrg < h_hght) {
-            elem.css('top', (h_hght-top));
-        } else {
-            elem.css('top', h_mrg);
+        if(top > h_hght){
+            $('.slick-gallery').css('top', h_mrg);
         }
+
+        var MaxRange = $('.prod-d-cont').height() - $('.slick-gallery').height(); //На сколько можно сдвинуть галлерею
+
+        $(window).resize(function() {
+            h_hght = $('#my-header').height() + $('.breadcrumb').height();
+            MaxRange = $('.prod-d-cont').height() - $('.slick-gallery').height(); //На сколько можно сдвинуть галлерею
+        });
+
+        $(window).scroll(function () {
+            top = $(this).scrollTop();
+
+            if(top > h_hght){
+                $('.slick-gallery').css('top', top - h_hght);
+            }
+            if((top - h_hght) > MaxRange){
+                $('.slick-gallery').css('top', MaxRange - 20);
+            }
+        });
+        $(window).scroll();
     });
+
+
 
 	// Custom JS
     $('#main-slider').owlCarousel({
