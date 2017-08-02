@@ -1610,5 +1610,120 @@ div.tab
 		font-size: 70px
 		color: rgba($default-color, 0.8)
 		z-index: -1
+.service-list-cont
+	border-radius: 5px
+	padding: 20px 10px
+	background: $default-color
+	margin-top: 50px
+	.item
+		background: #ffffff
+		border: 1px solid rgba($accent,.7)
+		margin-bottom: 10px
+		border-radius: 5px
+		padding: 10px 20px
+	.h3
+		font-size: 18px
+		font-weight: 700
+.prod-item
+	border-bottom: 1px solid $default-color
+	margin-bottom: 30px
+	padding-bottom: 30px
+	.prev-prod
+		background-size: cover!important
+	.h2
+		margin-bottom: 15px
+	.txt-code
+		color: $accent
+	.artic
+		font-weight: 700
+	p
+		margin-bottom: 5px
+.get-sale
+	background: $default-color
+	border-radius: 5px
+	padding: 30px
+	background-size: cover!important
+	position: relative
+	z-index: 1
+	&:after
+		content: ''
+		//background-image: -webkit-linear-gradient(top, rgba(76,76,76,0), rgba(237, 233, 226, 0.6) 100%)
+		top: 0px
+		left: 0px
+		right: 0px
+		bottom: 0px
+		width: 100%
+		height: 100%
+		position: absolute
+		z-index: -1
+		//background: rgba($accent, 0.5)
+		background-image: linear-gradient(left, rgba(39,189,179,1) 0%,rgba(125,185,232,0) 100%)
+	.h3
+		font-weight: 700
+		margin-bottom: 20px
+		color: #ffffff
+		text-shadow: 1px 1px 1px $black
+	input[type=text]:focus:not([readonly])
+		box-shadow: none
+		border-color: transparent
+	input
+		background: #ffffff
+		margin-bottom: 15px
+		padding-left: 10px
+		line-height: normal
+		border-radius: 4px
+	p
+		color: #ffffff
+	.form-head
+		position: relative
+		z-index: 1
+		p
+			color: $black
+		h3, .h2
+			color: #ffffff
+			text-shadow: 1px 1px 1px #000
+		&:after
+			content: "\f2c4"
+			font-family: FontAwesome
+			position: absolute
+			top: -22px
+			left: -31px
+			font-size: 343px
+			color: rgba($default-color, 0.3)
+			z-index: -1
+			line-height: 1
+.memory-cont
+	//background: rgba($accent, 0.5)
+	border-radius: 5px
+	padding: 30px
+	margin-top: 5px
+	min-height: 343px
+	ul
+		position: relative
+		z-index: 1
+		li
+			a
+				color: #ffffff
+				font-size: 21px
+				text-shadow: 1px 1px 1px #000
+				&:hover
+					text-decoration: underline
+.user-check
+	padding-right: 15px
+	color: #ffffff
+.client-msg-cont
+	position: relative
+	//background: rgba($default-color, 0.6)
+	#ok-sale-msg
+		//position: absolute
+		//top: 20px
+		display: none
+	#err-sale-msg
+		display: none
+	.client-msg
+		background: rgba($default-color, 0.6)
+		padding: 20px 15px
+		border-radius: 5px
+		margin-top: 20px
 @import "media" // Всегда в конце
 

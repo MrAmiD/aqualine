@@ -8,15 +8,14 @@ function CheckValid(selector, length, type){
         ErrMsgId = '#ErrMsgCon';
     }
     else{
-
-        OkMsgId = '#OkMsgCall';
-        ErrMsgId = '#ErrMsgCall';
+        OkMsgId = '#ok-sale-msg2';
+        ErrMsgId = '#err-sale-msg2';
     }
 
 
     var cssValuesOk = {
-        "border-color":"#433c8a",
-        "box-shadow":"0 1px 0 0 #433c8a"
+        "border-color":"green",
+        "box-shadow":"0 1px 0 0 green"
     }
     var cssValuesErr = {
         "border-color":"red",
@@ -74,6 +73,35 @@ function CunsultFormValid(){
     // var validEmail = CheckValid('input[name="mail"]', 1, 'email');
     if(validPhone)
         SendData = true;
+
+    if(SendData == true){
+        $.ajax({
+            type: "GET",
+            url: "ajax.html",
+            data: data
+        }).done(function() {
+            $("#popup").trigger('click');
+        });
+    }
+    return false;
+};
+
+function SaleFormValid(){
+    var data = {'action':'Sale','name':$('input[name="client-name"]').val(), 'email':$('input[name="client-email"]').val(), 'phoneCon':$('input[name="client-sale-phone"]').val()};
+    var SendData = false;
+    var validPhone = CheckValid('input[name="client-sale-phone"]', 17, 'text');
+    var validEmail = CheckValid('input[name="client-email"]', 1, 'email');
+    var validName = CheckValid('input[name="client-name"]', 2, 'other');
+    if(validPhone && validEmail && validName){
+        SendData = true;
+        $('#err-sale-msg').hide();
+        $('#ok-sale-msg').fadeIn();
+    }
+    else{
+        $('#err-sale-msg').fadeIn();
+        $('#ok-sale-msg').hide();
+    }
+
 
     if(SendData == true){
         $.ajax({
@@ -311,6 +339,7 @@ $(function() {
 
     $('input[name="phoneCon"]').mask("+7 (999) 999-9999");
     $('input[name="phoneAct"]').mask("+7 (999) 999-9999");
+    $('input[name="client-sale-phone"]').mask("+7 (999) 999-9999");
 
     $("#my-menu").mmenu({
         "extensions": [
