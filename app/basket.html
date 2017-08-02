@@ -197,7 +197,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row prod-item">
+				<div class="row prod-item in-basket" id="prod-item-1">
 					<div class="prev-prod col-12 col-md-4 col-lg-4 col-xl-3" style="background: url('img/products/img1.jpg')">
 					</div>
 					<div class="col-12 col-lg-8 col-md-8 col-xl-9">
@@ -208,12 +208,13 @@
 						<p class="artic">Производитель: <span class="txt-code">BRAVAT, Германия</span></p>
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur debitis, deserunt dolorem, eligendi esse exercitationem, hic id in iure obcaecati placeat quaerat quod ratione rem repellat repellendus soluta voluptates.</p>
-						<div class="row">
-
-						</div>
+						<a href="javascript:void(0)" class="delete-item" data-id="#prod-item-1">
+							<i class="fa fa-times" aria-hidden="true"></i>
+							Убрать из списка
+						</a>
 					</div>
 				</div>
-				<div class="row prod-item">
+				<div class="row prod-item in-basket" id="prod-item-2">
 					<div class="prev-prod col-12 col-md-4 col-lg-4 col-xl-3" style="background: url('img/products/img2.jpg')">
 					</div>
 					<div class="col-12 col-lg-8 col-md-8 col-xl-9">
@@ -224,12 +225,13 @@
 						<p class="artic">Производитель: <span class="txt-code">BRAVAT, Германия</span></p>
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur debitis, deserunt dolorem, eligendi esse exercitationem, hic id in iure obcaecati placeat quaerat quod ratione rem repellat repellendus soluta voluptates.</p>
-						<div class="row">
-
-						</div>
+						<a href="javascript:void(0)" class="delete-item" data-id="#prod-item-2">
+							<i class="fa fa-times" aria-hidden="true"></i>
+							Убрать из списка
+						</a>
 					</div>
 				</div>
-				<div class="row prod-item">
+				<div class="row prod-item in-basket" id="prod-item-3">
 					<div class="prev-prod col-12 col-md-4 col-lg-4 col-xl-3" style="background: url('img/products/img3.png')">
 					</div>
 					<div class="col-12 col-lg-8 col-md-8 col-xl-9">
@@ -240,10 +242,21 @@
 						<p class="artic">Производитель: <span class="txt-code">BRAVAT, Германия</span></p>
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur debitis, deserunt dolorem, eligendi esse exercitationem, hic id in iure obcaecati placeat quaerat quod ratione rem repellat repellendus soluta voluptates.</p>
-						<div class="row">
-
-						</div>
+						<a href="javascript:void(0)" class="delete-item" data-id="#prod-item-3">
+							<i class="fa fa-times" aria-hidden="true"></i>
+							Убрать из списка
+						</a>
 					</div>
+				</div>
+				<div class="row clean-basket">
+					<div class="col-12">
+						<p>
+							<i class="fa fa-frown-o" aria-hidden="true"></i>
+							Корзина пустая.
+							<a href="/">Перейти в каталог</a>
+						</p>
+					</div>
+
 				</div>
 				<div class="row get-sale" style="background: url('img/ryan-moreno.jpg') no-repeat">
 					<div class="col-12 col-md-6">
@@ -273,7 +286,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-12 col-md-6">
+					<div class="col-12 col-md-6 sale-form-cont">
 						<h3 class="h3">Оформление заказа</h3>
 						<form action="get-sale">
 							<input type="text" name="client-name" placeholder="Имя*">
@@ -724,12 +737,24 @@
 			</button>
 			<p id="OkMsgCall" style="color: green; display: none;">Спасибо за заявку, с Вами свяжется наш менеджер</p>
 			<p id="ErrMsgCall" style="color: red; display: none;">Введите корректные данные</p>
-
 		</div>
 	</div>
 </div>
 
 <link rel="stylesheet" href="css/main.min.css">
 <script src="js/scripts.min.js"></script>
+
+<script>
+    $(document).on( "click", ".delete-item", function() {
+        $($(this).data().id).fadeOut();
+        $($(this).data().id).removeClass('in-basket');
+        if($('.in-basket').length == 0){
+            $('.sale-form-cont').css('visibility', 'hidden');
+            $('.clean-basket').fadeIn();
+        }
+        console.log('Элемент удалён');
+    });
+</script>
+
 </body>
 </html>
