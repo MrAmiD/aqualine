@@ -398,8 +398,32 @@ a
 	border-bottom: solid 1px $accent2
 	margin-top: 20px
 	background: rgba($default-color, .3)
+	.catalog-menu
+		line-height: 55px
+		display: inline-block
+		font-weight: 700
+	.submenu
+		position: absolute
+		left: 0px
+		background: #ffffff
+		z-index: 1
+		padding-left: 15px
+		padding-right: 15px
+		width: 100%
+		display: none
+		border: solid 1px $accent2
+		border-top-color: transparent
+		width: 1150px
+		border-bottom-right-radius: 5px
+		border-bottom-left-radius: 5px
+		li
+			display: inline-block
+			padding-right: 10px
+	.container
+		position: relative
 	.category-menu
 		margin-bottom: 0
+		min-width: 54px
 		li
 			a
 				display: inline-block
@@ -411,6 +435,8 @@ a
 			transition: background-color .5s ease
 			&:hover
 				background-color: rgba($default-color, 0.5)
+				>.submenu
+					display: block
 	.find-block
 		position: relative
 		top: 8px
@@ -469,6 +495,24 @@ a
 		border-color: $default-color
 		.fa
 			color: $accent2
+
+#catalog-menu
+	background: #ffffff
+	.mm-listview>li
+		border-color: $default-color
+	.mm-listview>li:not(.mm-divider):after
+		display: none
+	.mm-title
+		font-size: 20px
+		font-weight: bold
+		color: $accent2
+	.mm-navbar
+		border-color: $default-color
+		.fa
+			color: $accent2
+	.mm-listview
+		.mm-next
+			background: rgba($accent2, 0.3)
 
 .navbar-toggleable-md .navbar-nav .nav-link
 	padding: 10px 43px
@@ -1378,13 +1422,96 @@ label
 		color: #b52e28
 		margin-bottom: 10px
 .content
+	h1, .h1
+		font-family: $default-font, sans-serif
+		font-size: 64px
+		color: $black
+		margin: 0px
+		margin-bottom: 30px
+	h2, .h2
+		font-family: $default-font, sans-serif
+		font-size: 55px
+		color: $black
+		margin: 0px
+		margin-bottom: 20px
+	h3, .h3
+		font-family: $default-font, sans-serif
+		font-size: 31px
+		color: black
+		margin: 0px
+		margin-bottom: 15px
+	h4, .h4
+		font-family: $default-font, sans-serif
+		font-size: 24px
+		color: $black
+		margin-bottom: 15px
+	h5, .h5
+		font-family: $default-font, sans-serif
+		font-size: 14px
+		color: $black
+		letter-spacing: normal
+		margin-bottom: 15px
+	p
+		font-family: $default-font, sans-serif
+		font-size: 17px
+		color: $black
+		margin-bottom: 15px
+	a
+		font-weight: 700
+		&:focus
+			color: $accent2
+
+	blockquote
+		background: $default-color
+		border-radius: 5px
+		p
+			font-style: italic
+			position: relative
+			padding-right: 2rem
+			&:before
+				content: '\f10d '
+				font-family: FontAwesome
+				position: absolute
+				left: 9px
+			&:after
+				content: '\f10e'
+				font-family: FontAwesome
+				position: absolute
+				right: 9px
+	table
+		th
+			background: rgba($default-color, 0.4)
+			padding: 0 15px
+		td
+			padding: 0 15px
+		tr
+			border-bottom: solid 1px $default-color
+			&:nth-child(odd)
+				background: rgba($default-color, 0.4)
 	ul
 		list-style: katakana
 		padding-left: 20px
+		margin-top: 30px
 		li
 			list-style: circle
+			ul
+				margin-top: 0px
+				padding-left: 30px
+				li
+					list-style: square
+	ol
+		padding-left: 20px
+		li
+			ol
+				padding-left: 30px
 	img
 		max-width: 100%
+		margin-bottom: 20px
+	iframe
+		max-width: 100%
+	video
+		max-width: 100%
+
 .product-card
 	position: relative
 	.fotorama__nav
@@ -1610,6 +1737,20 @@ div.tab
 		font-size: 70px
 		color: rgba($default-color, 0.8)
 		z-index: -1
+.content-head
+	padding: 0px
+	position: relative
+	margin-left: 24px
+	margin-top: 50px
+	&:after
+		content: "\f2cd"
+		font-family: FontAwesome
+		position: absolute
+		top: -36px
+		left: -24px
+		font-size: 70px
+		color: rgba($default-color, 0.8)
+		z-index: -1
 .service-list-cont
 	border-radius: 5px
 	padding: 20px 10px
@@ -1749,5 +1890,10 @@ div.tab
 		margin: 0px
 	a
 		text-decoration: underline
+.type-page
+	.service-list-cont
+		margin-top: 0px
+	.content-head
+		margin-top: 0px
 @import "media" // Всегда в конце
 

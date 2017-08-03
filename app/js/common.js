@@ -366,6 +366,33 @@ $(function() {
         ]
     });
     var api = $("#my-menu").data( "mmenu" );
+    $('#catalog-menu ul').html($('#category-menu').html());
+    $("#catalog-menu").mmenu({
+        "extensions": [
+            "fx-panels-zoom",
+            "effect-menu-slide",
+            "pagedim-black"
+        ],
+        "offCanvas": {
+            "position": "left"
+        },
+        "navbar": {
+            "title": "Каталог"
+        },
+        "navbars": [
+            {
+                "position": "bottom",
+                "content": [
+                    "<a class='fa fa-vk' href='https://vk.com/public98263653'></a>",
+                    "<a class='fa fa-facebook' href='https://www.facebook.com/pages/Aqualine-M/697503640350827?ref=aymt_homepage_panel'></a>",
+                    "<a class='fa fa-google-plus' href='/'></a>",
+                    "<a class='fa fa-linkedin' href='https://www.linkedin.com/company/aqualine-m-%D1%81%D0%B0%D0%BB%D0%BE%D0%BD?trk=top_nav_home'></a>",
+                ]
+            }
+        ]
+    });
+
+
 
     //   Hook into methods
     api.bind( "open:finish", function() {
