@@ -188,6 +188,18 @@ function openCity(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
+function set_basketCountLs(){
+    //Basket item count
+    var key = 'basket';
+    if(localStorage.getItem(key)){
+        var bug_paid = JSON.parse(localStorage.getItem(key));
+        $('.basket-btn .fa-shopping-basket').attr('count', bug_paid.length);
+    }
+    else {
+        $('.basket-btn .fa-shopping-basket').attr('count', 0);
+    }
+}
+
 $(function() {
     //	Preloader
     // $(window).on('load', function(){

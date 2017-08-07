@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-6 col-sm-2 col-md-5  col-lg-1 col-xl-2 basket-cont">
 						<a href="" class="basket-btn">
-							<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+							<i class="fa fa-shopping-basket" count="0" aria-hidden="true"></i>
 						</a>
 					</div>
 					<div class="col-6 col-sm-2  col-xl-2  hidden-lg-up  menu-cont push-sm-8 push-md-5 push-lg-0">
@@ -428,7 +428,7 @@
 											</p>
 										</div>
 										<div class="basket_btn">
-											<a href="javascript:void(0)">
+											<a href="javascript:void(0)"  class="addBasketBtn" data-name="Axor URQUIOLA" data-img="img/prev_cat.jpg" data-articul="234123" data-brand="ASP" data-country="Германия" data-discr="Смеситель для ванны, однорычажный, настенный Смеситель для ванны, однорычажный, настенный" data-id="123">
 												<i class="fa fa-plus" aria-hidden="true"></i>
 												<span class="basket-txt">В корзину </span>
 											</a>
@@ -882,6 +882,25 @@
 	</div>
 </div>
 
+
+<div data-fancybox="" data-src="#BasketMsg">
+	<div id="BasketMsg" class="popup" style="display: none">
+		<div class="head-pr popup-basket-head">
+			<p>Товар добавлен в корзину</p>
+			<h6 class="h2 prod-name">
+
+			</h6>
+		</div>
+
+		<img src="" class="img-responsive" alt="">
+		<p class="popup-discr">
+
+		</p>
+		<a href="javascript:void(0)" class="btn-basket-list" onclick="$('.fancybox-close-small').click();">Продолжить покупки</a>
+		<a href="" class="btn-basket-list btn-basket-toBasket">Список покупок</a>
+	</div>
+</div>
+
 <link rel="stylesheet" href="css/main.min.css">
 <script src="js/scripts.min.js"></script>
 <script>
@@ -918,7 +937,25 @@
                 $("#my-filter .filter-cont").html(' ');
             }
         });
-    })
+        set_basketCountLs();
+        var bug = [];//корзина с товарами
+        var key = 'basket';
+        if(localStorage.getItem(key))
+            bug = JSON.parse(localStorage.getItem(key));
+        $(document).on("click",".addBasketBtn", function(){
+            var BasketItem = $(this).data();
+            bug.push(BasketItem);
+            console.log('Basket-item', BasketItem);
+            console.log('bug', bug);
+            localStorage.setItem(key, JSON.stringify(bug));
+            set_basketCountLs();
+
+            $('#BasketMsg .popup-discr').html(BasketItem.discr);
+            $('#BasketMsg .prod-name').html(BasketItem.name);
+            $('#BasketMsg img').attr('src', BasketItem.img);
+            $('#BasketMsg').click();
+        });
+    });
 </script>
 </body>
 </html>

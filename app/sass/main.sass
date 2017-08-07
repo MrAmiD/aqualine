@@ -331,19 +331,43 @@ a
 			position: relative
 			font-size: 22px
 			&:after
-				content: '0'
+				content: attr(count)
 				position: absolute
+				font-family: $default-font
 				right: 0
 				top: -6px
 				font-size: 12px
 				border: solid 2px $default-color
 				border-radius: 50%
-				width: 17px
-				height: 17px
+				width: 23px
+				height: 23px
 				text-align: center
-				line-height: 15px
+				line-height: 21px
 				background-color: $accent2
 				color: $default-color
+.btn-basket-list
+	background: transparent
+	color: $black
+	border-radius: 30px
+	border: solid 1px $accent2
+	padding: 5px 10px
+	margin-right: 20px
+	white-space: nowrap
+	margin-bottom: 10px
+	display: inline-block
+	&:hover, &:focus
+		background: $accent2
+		color: #ffffff
+		outline: none
+
+
+
+#BasketMsg
+	p span.prod_name
+		font-weight: 700!important
+	img
+		margin-bottom: 30px
+
 
 .header-2lvl
 	.logo
@@ -1016,6 +1040,20 @@ a
 	margin-left: 24px
 	&:after
 		content: "\f2cd"
+		font-family: FontAwesome
+		position: absolute
+		top: -36px
+		left: -24px
+		font-size: 70px
+		color: rgba($default-color, 0.8)
+		z-index: -1
+.popup-basket-head
+	padding: 0px
+	position: relative
+	margin-left: 24px
+	z-index: 1
+	&:after
+		content: "\f217"
 		font-family: FontAwesome
 		position: absolute
 		top: -36px
