@@ -115,6 +115,37 @@ function SaleFormValid(){
     return false;
 };
 
+function FeedbackFormValid(){
+    var data = {'action':'Feedback','fb-name':$('input[name="fb-name"]').val(), 'fb-managerName':$('input[name="fb-managerName"]').val(), 'fb-userEmail':$('input[name="fb-userEmail"]').val(), 'fb-userPhone':$('input[name="fb-userPhone"]').val(), 'fb-fbMessage':$('textarea[name="fb-fbMessage"]').val()};
+    var SendData = false;
+    var validPhone = CheckValid('input[name="fb-userPhone"]', 17, 'text');
+    var validEmail = CheckValid('input[name="fb-userEmail"]', 1, 'email');
+    var validName = CheckValid('input[name="fb-name"]', 2, 'other');
+    var validMngrName = CheckValid('input[name="fb-managerName"]', 2, 'other');
+    var valiFbMsg = CheckValid('textarea[name="fb-fbMessage"]', 2, 'other');
+    if(validPhone && validEmail && validName && validMngrName && valiFbMsg){
+        SendData = true;
+        $('#ErrMsgDir').hide();
+        $('#OkMsgDir').fadeIn();
+    }
+    else{
+        $('#ErrMsgDir').fadeIn();
+        $('#OkMsgDir').hide();
+    }
+
+
+    if(SendData == true){
+        $.ajax({
+            type: "GET",
+            url: "ajax.html",
+            data: data
+        }).done(function() {
+            $("#popup").trigger('click');
+        });
+    }
+    return false;
+};
+
 function ActFormValid(){
     var data = {'action':'CallAct', 'phoneAct':$('input[name="phoneAct"]').val()};
     var SendData = false;
@@ -340,6 +371,7 @@ $(function() {
     $('input[name="phoneCon"]').mask("+7 (999) 999-9999");
     $('input[name="phoneAct"]').mask("+7 (999) 999-9999");
     $('input[name="client-sale-phone"]').mask("+7 (999) 999-9999");
+    $('input[name="fb-userPhone"]').mask("+7 (999) 999-9999");
 
     $("#my-menu").mmenu({
         "extensions": [
@@ -368,6 +400,31 @@ $(function() {
     var api = $("#my-menu").data( "mmenu" );
     $('#catalog-menu ul').html($('#category-menu').html());
     $("#catalog-menu").mmenu({
+        "extensions": [
+            "fx-panels-zoom",
+            "effect-menu-slide",
+            "pagedim-black"
+        ],
+        "offCanvas": {
+            "position": "left"
+        },
+        "navbar": {
+            "title": "Каталог"
+        },
+        "navbars": [
+            {
+                "position": "bottom",
+                "content": [
+                    "<a class='fa fa-vk' href='https://vk.com/public98263653'></a>",
+                    "<a class='fa fa-facebook' href='https://www.facebook.com/pages/Aqualine-M/697503640350827?ref=aymt_homepage_panel'></a>",
+                    "<a class='fa fa-google-plus' href='/'></a>",
+                    "<a class='fa fa-linkedin' href='https://www.linkedin.com/company/aqualine-m-%D1%81%D0%B0%D0%BB%D0%BE%D0%BD?trk=top_nav_home'></a>",
+                ]
+            }
+        ]
+    });
+    $('#catalog-menu-footer').html($('#category-menu').html());
+    $("#catalog-menu-footer").mmenu({
         "extensions": [
             "fx-panels-zoom",
             "effect-menu-slide",

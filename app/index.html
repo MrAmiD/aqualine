@@ -102,8 +102,8 @@
 					<!--</a>-->
 					<!--<p class="discr2">эксклюзивный дилер европейской сантехники</p>-->
 					<p>свет / плитка  / сантехника / ванны / аксесcуары</p>
-					 <a href="/" class="txt-logo">Aqualine-m</a>
-					 	<p class="discr2">эксклюзивный дилер европейской сантехники</p>
+					<a href="/" class="txt-logo">Aqualine-m</a>
+					<p class="discr2">эксклюзивный дилер европейской сантехники</p>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-4 work-time">
 					<div class="works-kont">
@@ -201,12 +201,16 @@
 						</nav>
 					</div>
 					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 find-cont">
-						<div class="find-block">
-							<input type="text" class="find-txt">
-							<a href="" class="find-btn">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</a>
-						</div>
+                        <form class="sisea-search-form" action="" method="">
+                            <div class="find-block">
+                                <input type="text" name="search" placeholder="Поиск" class="find-txt search-input" id="search" value="">
+                                <input type="hidden" name="id" value="3849">
+                                <div class="find-btn search-button">
+                                    <!--<i class="fa fa-search" aria-hidden="true"></i>-->
+                                    <input class="find-btn-sub" type="submit" value="">
+                                </div>
+                            </div>
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -217,6 +221,12 @@
 	<!-- Return to Top -->
 	<a href="javascript:" id="return-to-top">
 		<i class="fa fa-chevron-up" aria-hidden="true"></i>
+	</a>
+	<a href="javascript:void(0)" onclick="$('#di-feedback').click();" id="director-feedback">
+        <span class="txt">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+            Обратная связь
+        </span>
 	</a>
 
 	<div class="container type-page">
@@ -689,6 +699,34 @@
 			</button>
 			<p id="OkMsgCon" style="color: green; display: none;">Спасибо за заявку, с Вами свяжется наш менеджер</p>
 			<p id="ErrMsgCon" style="color: red; display: none;">Введите корректные данные</p>
+		</div>
+	</div>
+</div>
+<div data-fancybox="" data-src="#di-feedback">
+	<div id="di-feedback" class="popup" style="display: none">
+		<h4 class="h4">Обратная связь с директором АКВАЛАЙН-М</h4>
+		<form action="">
+			<input type="text" name="fb-name" placeholder="Укажите Ваше имя*">
+			<input type="text" name="fb-managerName" placeholder="Укажите имя менеджера, с которым общались*">
+			<input type="text" name="fb-userEmail" placeholder="Почта для связи с Вами*">
+            <input type="text" name="fb-userPhone" id="userPhone" placeholder="Ваш телефон*">
+            <textarea name="fb-fbMessage" id="" cols="10" rows="15" placeholder="Расскажите нам, остались ли вы довольны работой менеджера"></textarea>
+            <label class="fileContainer">
+                Прикрепить файл <i class="fa fa-paperclip" aria-hidden="true"></i>
+                <input type="file"/>
+            </label>
+            <div class="capture">
+
+            </div>
+        </form>
+		<p>*При отправке заявки вы даете право на обработку ваших персональных данных</p>
+		<div>
+			<!--data-fancybox-close=""-->
+			<button class="btn btn-raised btn-info" onclick="FeedbackFormValid();" id="#submit_di-feedback">Отправить
+				<div class="ripple-container"></div>
+			</button>
+            <p id="OkMsgDir" style="color: green; display: none;">Благодарим за обратную связь, вместе мы становимся лучше!</p>
+            <p id="ErrMsgDir" style="color: red; display: none;">Введите корректные данные</p>
 		</div>
 	</div>
 </div>
